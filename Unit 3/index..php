@@ -1,4 +1,6 @@
 <?php
+
+echo "<pre>"; // For better readability of output in the browser
 //Question 1 begins here
 //Section covering part a.
 /**
@@ -58,6 +60,34 @@ function calculateDiscount($price, $discountPercent){
     return $price * (1 - $discountPercent / 100);
 }
 
+// Output for question 1
+echo "Question 1 Outputs:\n\n";
+
+// --- Total Price ---
+$originalPrice = 100;
+$quantity = 2;
+$totalPrice = calculateTotal($originalPrice, $quantity);
+
+echo "Original Price: $" . number_format($originalPrice, 2) . "\n";
+echo "Quantity: " . $quantity . "\n";
+echo "Total Price (including 10% tax): $" . number_format($totalPrice, 2) . "\n\n";
+
+// --- Product Name Formatting ---
+$productName = "  HELLO world! @#$ ";
+$formattedName = formatProductName($productName);
+
+echo "Original Product Name: '" . $productName . "'\n";
+echo "Formatted Product Name: '" . $formattedName . "'\n\n";
+
+// --- Discount Calculation ---
+$discountPercent = 10;
+$discountedPrice = calculateDiscount($originalPrice, $discountPercent);
+
+echo "Original Price: $" . number_format($originalPrice, 2) . "\n";
+echo "Discount Percentage: " . $discountPercent . "%\n";
+echo "Discounted Price: $" . number_format($discountedPrice, 2) . "\n";
+echo "\n\n";
+
 
 
 //Question 2 begins here
@@ -76,13 +106,13 @@ $products = [
         'name' => 'MacBook Air & Pro',
         'price' => 1099,
         'category' => 'Electronics',
-        'description' => 'Lightweight laptop with M1 chip and Retina display'
+        'description' => 'Lightweight laptop with_M1 chip and Retina display'
     ],
     [
         'name' => 'iPad Pro-12.9',
         'price' => 799,
         'category' => 'Electronics',
-        'description' => 'Powerful tablet with Apple Pencil support and Liquid Retina display'
+        'description' => 'Powerful tablet with Apple_Pencil support and Liquid Retina display'
     ],
     [
         'name' => 'Apple Watch Series 8@',
@@ -94,16 +124,17 @@ $products = [
         'name' => 'AirPods Pro#2',
         'price' => 249,
         'category' => 'Electronics',
-        'description' => 'Wireless earbuds with active noise cancellation and spatial audio'
+        'description' => 'Wireless_earbuds with active noise cancellation and spatial audio'
     ]
 ];
-
+// Output for question 2
+echo "Question 2 Outputs:\n\n";
 //print original list of products
 echo "Original Product List:\n";
 foreach ($products as $product) {
     echo "Name: " . $product['name'] . ", Category: " . $product['category'] . ", Price: $" . number_format($product['price'], 2) . ", Description: " . $product['description'] . "\n";
 }
-
+echo "\n";
 // Function to remove duplicate products based on product names
 /**
  * Removes duplicate products from an array based on product names.
@@ -157,7 +188,7 @@ echo "Sorted Product List:\n";
 foreach ($products as $product) {
     echo "Name: " . $product['name'] . ", Category: " . $product['category'] . ", Price: $" . number_format($product['price'], 2) . ", Description: " . $product['description'] . "\n";
 }
-
+echo "\n";
 
 // Section covering part b.
 // Apply 10% discount to products in the "Electronics" category
@@ -177,6 +208,7 @@ echo "Updated Product List:\n";
 foreach ($products as $product) {
     echo "Name: " . $product['name'] . ", Category: " . $product['category'] . ", Price: $" . number_format($product['price'], 2) . ", Description: " . $product['description'] . "\n";
 }
+echo "\n";
 
 // Section covering part c.
 // Define supplier inventories
@@ -239,10 +271,18 @@ echo "Combined Inventory:\n";
 foreach ($uniqueProducts as $product) {
     echo "Name: " . $product['name'] . ", Category: " . $product['category'] . ", Price: $" . number_format($product['price'], 2) . ", Description: " . $product['description'] . "\n";
 }
-
+echo "\n";
 
 
 //Question 3 begins here
+// Output for question 3
+echo "Question 3 Outputs:\n\n";
+
+echo "Before Formatting:\n";
+foreach ($products as $product) {
+    echo "Name: {$product['name']} | Description: {$product['description']}\n";
+}
+echo "\n";
 
 //Section covering part a.
 /**
@@ -269,6 +309,13 @@ foreach ($products as &$product) {
     $product['description'] = formatProductDescription($product['description']);
     $product['name'] = formatProductName($product['name']);
 }
+
+echo "After Formatting:\n";
+foreach ($products as $product) {
+    echo "Name: {$product['name']} | Description: {$product['description']}\n";
+}
+echo "\n";
+
 
 //Section covering part b.
 //I changed the function to also accept a keyword, so that it can check for relevant keywords, since 'leather', in the assignment prompt is not part of my products.
@@ -311,6 +358,8 @@ function analyzeDescription($description, $keyword) {
 //Using analyzeDescription function with a sample description and keyword
 $sampleDescription = "This is a powerful tablet with Apple Pencil support and Liquid Retina display.";
 $sampleKeyword = "pencil";
+echo "Original Description: $sampleDescription\n";
+echo "Keyword Searched: $sampleKeyword\n\n";
 analyzeDescription($sampleDescription, $sampleKeyword);
 
 
@@ -348,9 +397,10 @@ function formatCustomerReview($review)
 
     return $updatedReview;
 }
-
+echo "\n";
 // Using formatCustomerReview function with a sample review
 $sampleReview = "  This product is excellent! I really enjoyed using it.  ";
+echo "Original Review: '$sampleReview'\n\n";
 formatCustomerReview($sampleReview);
 
 
